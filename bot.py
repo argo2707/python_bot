@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from telebot.apihelper import ApiTelegramException
 import time
-bot = telebot.TeleBot('5869861728:AAHGnHorclpApCWhICqNpkrymOK2AdD3JnQ')
+bot = telebot.TeleBot("Key")
 
 def is_subscribed(chat_id,user_id):
     chat_member =  bot.get_chat_member(chat_id=chat_id,user_id=user_id)
