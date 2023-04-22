@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from telebot.apihelper import ApiTelegramException
 import time
-bot = telebot.TeleBot("Key")
+bot = telebot.TeleBot("yourToken")
 
 def is_subscribed(chat_id,user_id):
     chat_member =  bot.get_chat_member(chat_id=chat_id,user_id=user_id)
@@ -33,13 +33,13 @@ def text(message):
         try:
             markup=types.ReplyKeyboardMarkup(resize_keyboard=True,one_time_keyboard=True)
             item1=types.KeyboardButton("Подписку оформил"+ u'😉')
-            if is_subscribed(chat_id='@nftparty',user_id=message.from_user.id):
+            if is_subscribed(chat_id="@yourchannel",user_id=message.from_user.id):
                 doc = open('metodicka-2022.pdf', 'rb')
                 bot.send_document(message.chat.id,doc)
                 doc.close()
             else:
                 markup.add(item1)
-                bot.send_message(message.chat.id, "Подпишись на канал, друг!\nИ бесплатная методичка твоя!\n\nNFT БРИХАСПАТИ"+ u'👉'+"https://t.me/+X6Qj-bN8UY03NjZi",reply_markup=markup)
+                bot.send_message(message.chat.id, "Подпишись на канал, друг!\nИ бесплатная методичка твоя!",reply_markup=markup)
         except ApiTelegramException as e:
            if e.description == "Forbidden: bot was blocked by the user":
                    print("Attention please! The user {} has blocked the bot. I can't send anything to them".format(message.chat.id))
